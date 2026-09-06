@@ -1,0 +1,26 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogEntry from '@/components/entries/BlogEntry.astro';
+import { getCollection } from 'astro:content';
+import { withBase } from '@/lib/site';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
+  return tags.map((tag) => ({ params: { tag }, props: { tag } }));
+}
+
+const { tag } = Astro.props;
+const posts = (await getCollection('posts'))
+  .filter((post) => post.data.tags.includes(tag))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+<BaseLayout title={`#${tag}`} description={`Posts tagged ${tag}.`}>
+  <section class="py-20 sm:py-24">
+    <a class="text-xs text-base-500 hover:text-base-900" href={withBase('/')}>← All posts</a>
+    <h1 class="mt-4 text-4xl font-medium tracking-tight">#{tag}</h1>
+    <div class="mt-10 grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2">
+      {posts.map((entry) => <BlogEntry entry={entry} />)}
+    </div>
+  </section>
+</BaseLayout>

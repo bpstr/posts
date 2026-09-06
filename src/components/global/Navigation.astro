@@ -1,0 +1,10 @@
+---
+import { GITHUB_URL, withBase } from '@/lib/site';
+---
+<header class="flex items-center justify-between py-6 border-b border-base-100">
+  <a class="text-sm font-semibold tracking-tight uppercase" href={withBase('/')}>Jani Fent</a>
+  <nav class="flex items-center gap-4" aria-label="Primary navigation">
+    <a class="text-sm text-base-600 hover:text-base-900" href={withBase('/rss.xml')}>RSS</a>
+    <a class="inline-flex items-center justify-center rounded-full bg-base-900 px-3 py-1.5 text-sm text-white transition hover:bg-base-700" href={GITHUB_URL} rel="me">GitHub</a>
+  </nav>
+</header>

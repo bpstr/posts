@@ -1,0 +1,31 @@
+---
+import { DEFAULT_COVER, withBase } from '@/lib/site';
+const { entry } = Astro.props;
+const cover = entry.data.image ?? DEFAULT_COVER;
+const url = withBase(`/${entry.id}/`);
+---
+<article class="flex h-full flex-col">
+  <a href={url} aria-label={`Read ${entry.data.title}`} class="group block overflow-hidden rounded-xl bg-base-100">
+    <img
+      src={cover.url}
+      alt={cover.alt}
+      width="1200"
+      height="800"
+      loading="lazy"
+      decoding="async"
+      transition:name={`post-cover-${entry.id}`}
+      class="aspect-[3/2] w-full object-cover transition duration-300 group-hover:scale-[1.015]"
+    />
+  </a>
+  <div class="mt-3">
+    <div class="flex items-center gap-1 text-xs text-base-500">
+      <span class="font-medium">{entry.data.author}</span>
+      <span aria-hidden="true">·</span>
+      <time datetime={entry.data.pubDate.toISOString()}>{entry.data.pubDate.toISOString().slice(0, 10)}</time>
+    </div>
+    <h2 class="mt-3 text-lg font-medium leading-snug text-base-900">
+      <a class="hover:underline" href={url}>{entry.data.title}</a>
+    </h2>
+    <p class="mt-1 text-sm leading-6 text-base-600">{entry.data.description}</p>
+  </div>
+</article>

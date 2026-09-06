@@ -1,0 +1,10 @@
+---
+import { GITHUB_URL, withBase } from '@/lib/site';
+---
+<footer class="flex flex-col gap-2 border-t border-base-100 py-8 text-xs text-base-500 sm:flex-row sm:items-center sm:justify-between">
+  <span>© {new Date().getFullYear()} Jani Fent</span>
+  <div class="flex gap-4">
+    <a class="hover:text-base-900" href={withBase('/rss.xml')}>RSS</a>
+    <a class="hover:text-base-900" href={GITHUB_URL} rel="me">GitHub</a>
+  </div>
+</footer>
