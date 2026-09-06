@@ -1,0 +1,15 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { withBase } from '@/lib/site';
+const posts = await getCollection('posts');
+const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
+---
+<BaseLayout title="Tags" description="Browse posts by topic.">
+  <section class="py-20 sm:py-24">
+    <h1 class="text-4xl font-medium tracking-tight">Tags</h1>
+    <div class="mt-8 flex flex-wrap gap-3">
+      {tags.map((tag) => <a class="rounded-full border border-base-200 px-3 py-1.5 text-sm hover:border-base-400" href={withBase(`/tags/${tag}/`)}>#{tag}</a>)}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,34 @@
+---
+import '@/styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import { DEFAULT_COVER, SITE_DESCRIPTION, SITE_TITLE, withBase } from '@/lib/site';
+
+const {
+  title = SITE_TITLE,
+  description = SITE_DESCRIPTION,
+  image = DEFAULT_COVER.url,
+} = Astro.props;
+const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} · ${SITE_TITLE}`;
+const canonical = Astro.url.href;
+---
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="author" content="Jani Fent" />
+<meta name="theme-color" content="#ffffff" />
+<title>{pageTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<link rel="alternate" type="application/rss+xml" title={`${SITE_TITLE} RSS`} href={withBase('/rss.xml')} />
+<meta property="og:type" content="website" />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={image} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+<link rel="preconnect" href="https://rsms.me/" />
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+<link href="https://api.fontshare.com/v2/css?f[]=jet-brains-mono@1,2&display=swap" rel="stylesheet" />
+<ClientRouter />

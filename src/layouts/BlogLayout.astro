@@ -1,0 +1,43 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { DEFAULT_COVER, withBase } from '@/lib/site';
+const { entry } = Astro.props;
+const cover = entry.data.image ?? DEFAULT_COVER;
+---
+<BaseLayout title={entry.data.title} description={entry.data.description} image={cover.url}>
+  <article class="py-16 sm:py-24">
+    <header class="mx-auto max-w-2xl text-center">
+      <a class="text-xs font-medium text-base-500 hover:text-base-900" href={withBase('/')}>← All posts</a>
+      <h1 class="mt-5 text-balance text-4xl font-medium tracking-tight text-base-900 sm:text-5xl">{entry.data.title}</h1>
+      <p class="mx-auto mt-4 max-w-xl text-balance text-sm leading-6 text-base-600">{entry.data.description}</p>
+    </header>
+
+    <figure class="mt-10">
+      <img
+        src={cover.url}
+        alt={cover.alt}
+        width="1600"
+        height="1000"
+        decoding="async"
+        transition:name={`post-cover-${entry.id}`}
+        class="aspect-[8/5] w-full rounded-xl object-cover"
+      />
+      {cover.credit && cover.creditUrl && (
+        <figcaption class="mt-2 text-right text-[11px] text-base-400">
+          Photo: <a class="hover:text-base-700 hover:underline" href={cover.creditUrl}>{cover.credit}</a> / Unsplash
+        </figcaption>
+      )}
+    </figure>
+
+    <div class="mt-4 flex flex-col gap-3 text-xs text-base-500 sm:flex-row sm:items-center sm:justify-between">
+      <p>{entry.data.pubDate.toISOString().slice(0, 10)} · {entry.data.author}</p>
+      <div class="flex flex-wrap gap-3">
+        {entry.data.tags.map((tag) => <a class="hover:text-base-900" href={withBase(`/tags/${tag}/`)}>#{tag}</a>)}
+      </div>
+    </div>
+
+    <div class="prose prose-sm mx-auto mt-14 max-w-2xl prose-headings:font-medium prose-headings:tracking-tight prose-p:leading-7 prose-li:leading-7 prose-code:font-mono prose-pre:overflow-x-auto">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
