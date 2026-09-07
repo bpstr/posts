@@ -87,7 +87,72 @@ Codex or Claude Code
 existing local authenticated session
 ```
 
-For Codex, projects such as [mehdic/codex-proxy](https://github.com/mehdic/codex-proxy) wrap the official Codex app-server and expose OpenAI-style `/v1/responses` and `/v1/chat/completions` endpoints on localhost.
+For Codex, a concrete example is [mehdic/codex-proxy](https://github.com/mehdic/codex-proxy). It wraps the official `codex app-server` over stdio JSON-RPC and exposes OpenAI-style `/v1/responses` and `/v1/chat/completions` endpoints on localhost while leaving authentication to the official Codex CLI.
+
+### Minimal Codex proxy setup
+
+The current setup requires Node.js 20+ and an authenticated Codex CLI session.
+
+First install and verify Codex:
+
+```bash
+npm install -g @openai/codex
+codex login
+codex exec "Reply OK only."
+```
+
+Then install and start the proxy:
+
+```bash
+git clone https://github.com/mehdic/codex-proxy.git
+cd codex-proxy
+npm install
+npm run build
+npm start
+```
+
+By default it binds to:
+
+```text
+http://127.0.0.1:3466
+```
+
+You can verify the process without invoking a model:
+
+```bash
+curl http://127.0.0.1:3466/health
+```
+
+Then try a local OpenAI-style request:
+
+```bash
+curl http://127.0.0.1:3466/v1/chat/completions \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "model": "gpt-5.5",
+    "messages": [
+      {"role": "user", "content": "Reply OK only."}
+    ]
+  }'
+```
+
+For an existing OpenAI-compatible client, point its base URL at:
+
+```text
+http://127.0.0.1:3466/v1
+```
+
+If the client insists on an API-key field, a local placeholder such as `local` is enough; the proxy delegates the real authentication to your already authenticated Codex CLI session rather than asking you to copy Codex OAuth tokens into another application.
+
+Once it is running, the repository also provides:
+
+```bash
+npm run smoke
+```
+
+for a small localhost smoke test covering health, model discovery, a non-streaming request, and a streaming request.
+
+Keep this service bound to localhost unless you deliberately add your own authentication and security boundary. Codex is an agent runtime with native capabilities, not just a text completion server. The proxy itself defaults to `127.0.0.1` and conservative Codex sandbox settings for a reason.
 
 For Claude Code, projects such as [oliverox/claude-proxy](https://github.com/oliverox/claude-proxy) invoke Claude Code and expose an Anthropic-compatible `/v1/messages` endpoint locally.
 
