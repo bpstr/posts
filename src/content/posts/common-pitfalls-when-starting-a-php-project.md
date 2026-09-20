@@ -2,7 +2,7 @@
 title: "Common Pitfalls When Starting a PHP Project"
 pubDate: 2026-08-11
 description: "Practical mistakes that make a new PHP codebase harder to maintain, test, deploy, and evolve—and the boring defaults that prevent them."
-author: "Jani Fent"
+author: "bpstr"
 tags: [php, architecture, testing, devops]
 image:
   url: "https://images.unsplash.com/photo-1489875347897-49f64b51c1f8?auto=format&fit=crop&w=1600&q=80"
