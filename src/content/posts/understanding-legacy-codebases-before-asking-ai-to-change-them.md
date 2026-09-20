@@ -2,7 +2,7 @@
 title: "Understanding Legacy Codebases Before Asking AI to Change Them"
 pubDate: 2026-09-06
 description: "A practical approach to reconstructing features, flows, settings, UI surfaces, and change maps so coding agents can work from a persistent model of a mature codebase."
-author: "Jani Fent"
+author: "bpstr"
 tags: [ai, architecture, legacy-code, graphify]
 image:
   url: "https://images.unsplash.com/photo-1775994121044-247049a5c569?auto=format&fit=crop&w=1600&q=80"
