@@ -1,6 +1,6 @@
-export const SITE_TITLE = 'Jani Fent';
+export const SITE_TITLE = 'bpstr';
 export const SITE_DESCRIPTION = 'Notes on software systems, AI, architecture, and the web.';
-export const AUTHOR = 'Jani Fent';
+export const AUTHOR = 'bpstr';
 export const GITHUB_URL = 'https://github.com/bpstr';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
