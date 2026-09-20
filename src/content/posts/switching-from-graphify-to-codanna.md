@@ -2,8 +2,13 @@
 title: "Why I'm Switching from Graphify to Codanna"
 pubDate: 2026-09-10
 description: "Moving local code intelligence to Codanna for a growing codebase, with honest first-index observations and a focus on useful agent context."
-author: "Jani Fent"
+author: "bpstr"
 tags: [ai, codanna, graphify, developer-tools]
+image:
+  url: "https://images.unsplash.com/photo-1759661881353-5b9cc55e1cf4?auto=format&fit=crop&w=1600&q=80"
+  alt: "Computer screen displaying colorful source code"
+  credit: "Jakub Żerdzicki"
+  creditUrl: "https://unsplash.com/photos/computer-screen-displaying-lines-of-code-n3ba57RKVNs"
 ---
 
 [Graphify](https://github.com/Graphify-Labs/graphify) appealed to me because I wanted coding agents to understand a codebase, not rediscover it through endless searches.
