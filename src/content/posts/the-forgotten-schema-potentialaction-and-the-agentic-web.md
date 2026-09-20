@@ -2,7 +2,7 @@
 title: "The Forgotten Schema: potentialAction and the Agentic Web"
 pubDate: 2026-08-25
 description: "Schema.org already has a vocabulary for things websites can do. potentialAction may be one missing semantic layer between crawlable content and agent-discoverable capabilities."
-author: "Jani Fent"
+author: "bpstr"
 tags: [ai, web, schema-org, agents]
 image:
   url: "https://images.unsplash.com/photo-1655993810480-c15dccf9b3a0?auto=format&fit=crop&w=1600&q=80"
