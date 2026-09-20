@@ -2,7 +2,7 @@
 title: "Testing AI-Powered Applications Without Paying for Every Test"
 pubDate: 2026-09-07
 description: "A practical testing architecture for AI applications: deterministic fakes, fixtures, local model proxies, explicit provider checks, evals, cost guards, and CI that cannot accidentally spend money."
-author: "Jani Fent"
+author: "bpstr"
 tags: [ai, testing, api, ci, architecture]
 ---
 
