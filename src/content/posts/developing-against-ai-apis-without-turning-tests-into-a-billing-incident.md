@@ -2,7 +2,7 @@
 title: "Developing Against AI APIs Without Turning Tests Into a Billing Incident"
 pubDate: 2026-09-07
 description: "Practical rules for developing with OpenAI, Claude, and other metered AI APIs without leaking keys, burning credits in CI, or discovering an expensive agent loop too late."
-author: "Jani Fent"
+author: "bpstr"
 tags: [ai, api, testing, devops, security]
 ---
 
